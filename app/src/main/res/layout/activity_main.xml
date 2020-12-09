@@ -191,7 +191,7 @@
         android:layout_height="68dp"
         app:srcCompat="@drawable/number6"
         tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="90dp" />
+        tools:layout_editor_absoluteY="154dp" />
 
     <ImageView
         android:id="@+id/imageView10"
