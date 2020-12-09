@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private View.OnTouchListener handleTouch = new View.OnTouchListener() {
         float dX, dY;
+        int y;
         @Override
         public boolean onTouch(View view, MotionEvent event) {
             switch (event.getAction()) {
