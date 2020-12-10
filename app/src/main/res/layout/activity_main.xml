@@ -144,6 +144,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/apple" />
 
+    <TextView
+        android:id="@+id/equation"
+        android:layout_width="327dp"
+        android:layout_height="63dp"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254" />
+
     <Button
         android:id="@+id/Number0"
         android:layout_width="70dp"
@@ -152,7 +163,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="10dp"
         android:foreground="@drawable/number0"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="0"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -165,7 +177,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:foreground="@drawable/number1"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="1"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number0"
         app:layout_constraintTop_toTopOf="parent" />
@@ -178,7 +191,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:foreground="@drawable/number2"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="2"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -191,7 +205,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:foreground="@drawable/number3"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="3"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -200,14 +215,13 @@
         android:id="@+id/Number4"
         android:layout_width="70dp"
         android:layout_height="65dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:foreground="@drawable/number4"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="4"
         app:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/Number3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -219,7 +233,8 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/number5"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="5"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Number0" />
@@ -232,7 +247,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/number6"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="6"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number5"
         app:layout_constraintTop_toBottomOf="@+id/Number1" />
@@ -245,7 +261,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/number7"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="7"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number6"
         app:layout_constraintTop_toBottomOf="@+id/Number2" />
@@ -258,7 +275,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/number8"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="8"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number7"
         app:layout_constraintTop_toBottomOf="@+id/Number3" />
@@ -271,20 +289,24 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/number9"
-        android:text="Button"
+        android:onClick="onButtonClick"
+        android:text="9"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/Number8"
         app:layout_constraintTop_toBottomOf="@+id/Number4" />
 
-    <TextView
-        android:id="@+id/equation"
-        android:layout_width="327dp"
-        android:layout_height="63dp"
+    <View
+        android:id="@+id/correctScrn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#4CF603"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="invisible" />
 
     <Button
         android:id="@+id/ReplayButt"
@@ -292,25 +314,14 @@
         android:layout_height="157dp"
         android:background="#FFFFFF"
         android:foreground="@drawable/play_again"
-        android:text="Button"
+        android:onClick="replayOnClick"
         android:visibility="invisible"
-        app:backgroundTint="#31C816"
+        app:backgroundTint="#0331C816"
         app:iconTint="#47A325"
         app:layout_constraintBottom_toBottomOf="@+id/correctScrn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/correctScrn"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/correctScrn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#4EF412"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:visibility="invisible" />
 
     <ImageView
         android:id="@+id/Star1"
@@ -351,10 +362,11 @@
 
     <TextView
         android:id="@+id/Correct"
-        android:layout_width="175dp"
-        android:layout_height="69dp"
+        android:layout_width="204dp"
+        android:layout_height="93dp"
         android:layout_marginTop="36dp"
         android:text="Correct"
+        android:textSize="60dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"

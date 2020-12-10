@@ -1,5 +1,6 @@
 package com.example.a17047242mobilecomputingassignment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -15,7 +16,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Random rand = new Random();
-    int leftSide, rightSide;
+    int leftSide = rand.nextInt(6);
+    int  rightSide = rand.nextInt(5);
     int sumation = leftSide + rightSide;
 
 
@@ -25,15 +27,20 @@ public class MainActivity extends AppCompatActivity {
             if (num == sumation){
                 TextView myTextView;
                 myTextView = findViewById(R.id.equation);
-                myTextView.setText("" + leftSide + "+" + rightSide + "=" + num);
+                myTextView.setText("" + leftSide + " + " + rightSide + "=" + num);
 
             }else{
                 TextView myTextView;
                 myTextView = findViewById(R.id.equation);
-                myTextView.setText(""+ leftSide + "" + rightSide + "= ?" );
-            };
-    };
+                myTextView.setText(""+ leftSide + " + " + rightSide + "= ?" );
+            }
+    }
 
+    public void replayOnClick (View v){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
 
     public void correctPage(){
 
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         Button butt9 = (Button) findViewById(R.id.Number9);
         butt9.setVisibility(View.INVISIBLE);
 
+        ImageView apple = findViewById(R.id.Apple);
+        apple.setVisibility(View.INVISIBLE);
         ImageView apple1 = findViewById(R.id.Apple1);
         apple1.setVisibility(View.INVISIBLE);
         ImageView apple2 = findViewById(R.id.Apple2);
@@ -83,19 +92,28 @@ public class MainActivity extends AppCompatActivity {
         replayButton.setVisibility(View.VISIBLE);
         View greenBG = (View) findViewById(R.id.correctScrn);
         greenBG.setVisibility(View.VISIBLE);
-        ImageView s1 = findViewById(R.id.Star1);
-        s1.setVisibility(View.VISIBLE);
-        ImageView s2 = findViewById(R.id.Star2);
-        s2.setVisibility(View.VISIBLE);
+        ImageView Star1 = findViewById(R.id.Star1);
+        Star1.setVisibility(View.VISIBLE);
+        ImageView Star2 = findViewById(R.id.Star2);
+        Star2.setVisibility(View.VISIBLE);
+        ImageView Star3 = findViewById(R.id.Star3);
+        Star3.setVisibility(View.VISIBLE);
         View text = (View) findViewById(R.id.Correct);
         text.setVisibility(View.VISIBLE);
         ImageView thumb = findViewById(R.id.thumbsup);
         thumb.setVisibility(View.VISIBLE);
 
+        AlphaAnimation alpha;
+        alpha = new AlphaAnimation(1,0);
+        alpha.setDuration(500);
+        Star1.startAnimation(alpha);
+        Star2.startAnimation(alpha);
+        Star3.startAnimation(alpha);
 
-    };
 
-    public void incorrectPage(){};
+    }
+
+
 
     public void onButtonClick(View v){
             Button pressed = (Button)v;
@@ -103,43 +121,17 @@ public class MainActivity extends AppCompatActivity {
 
             if ( answer == sumation  ) {
                 correctPage();
-                equations(sumation);
+                equations(answer);
             } else{
                 AlphaAnimation alpha;
-                alpha }
+                alpha = new AlphaAnimation(1,0);
+                alpha.setDuration(500);
+                pressed.startAnimation(alpha);
+                pressed.setVisibility(View.INVISIBLE);
             }
 
-        };
 
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        equations( -1);
-
-        ImageView Apple1 = (ImageView) findViewById(R.id.Apple1);
-        Apple1.setOnTouchListener(handleTouch);
-        ImageView Apple2 = (ImageView) findViewById(R.id.Apple2);
-        Apple2.setOnTouchListener(handleTouch);
-        ImageView Apple3 = (ImageView) findViewById(R.id.Apple3);
-        Apple3.setOnTouchListener(handleTouch);
-        ImageView Apple4 = (ImageView) findViewById(R.id.Apple);
-        Apple4.setOnTouchListener(handleTouch);
-        ImageView Apple5 = (ImageView) findViewById(R.id.Apple5);
-        Apple5.setOnTouchListener(handleTouch);
-        ImageView Apple6 = (ImageView) findViewById(R.id.Apple6);
-        Apple6.setOnTouchListener(handleTouch);
-        ImageView Apple7 = (ImageView) findViewById(R.id.Apple7);
-        Apple7.setOnTouchListener(handleTouch);
-        ImageView Apple8 = (ImageView) findViewById(R.id.Apple8);
-        Apple8.setOnTouchListener(handleTouch);
-        ImageView Apple9 = (ImageView) findViewById(R.id.Apple9);
-        Apple9.setOnTouchListener(handleTouch);
-
-    }
+        }
 
 
     private View.OnTouchListener handleTouch = new View.OnTouchListener() {
@@ -165,9 +157,37 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void equals0 (){
 
-    };
-    
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        equations( -1);
+
+        ImageView Apple = (ImageView) findViewById(R.id.Apple);
+        Apple.setOnTouchListener(handleTouch);
+        ImageView Apple1 = (ImageView) findViewById(R.id.Apple1);
+        Apple1.setOnTouchListener(handleTouch);
+        ImageView Apple2 = (ImageView) findViewById(R.id.Apple2);
+        Apple2.setOnTouchListener(handleTouch);
+        ImageView Apple3 = (ImageView) findViewById(R.id.Apple3);
+        Apple3.setOnTouchListener(handleTouch);
+        ImageView Apple4 = (ImageView) findViewById(R.id.Apple4);
+        Apple4.setOnTouchListener(handleTouch);
+        ImageView Apple5 = (ImageView) findViewById(R.id.Apple5);
+        Apple5.setOnTouchListener(handleTouch);
+        ImageView Apple6 = (ImageView) findViewById(R.id.Apple6);
+        Apple6.setOnTouchListener(handleTouch);
+        ImageView Apple7 = (ImageView) findViewById(R.id.Apple7);
+        Apple7.setOnTouchListener(handleTouch);
+        ImageView Apple8 = (ImageView) findViewById(R.id.Apple8);
+        Apple8.setOnTouchListener(handleTouch);
+        ImageView Apple9 = (ImageView) findViewById(R.id.Apple9);
+        Apple9.setOnTouchListener(handleTouch);
+
+    }
+
 
 }
